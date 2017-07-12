@@ -1,0 +1,14 @@
+<center><h2>Income Report</h2></center>
+
+<table style="width: 50%" border=3>
+	<th>Amount</th>
+	<th>Category</th>
+	<th>Date</th>
+	<% income_data.each do |income| %>
+	  <tr>
+	    <td ><%= income.amount %></td>
+	    <td ><%= income.category.try(:name)  %></td>
+	    <td ><%= income.created_at.to_date %></td>
+	  </tr>
+	<% end %>
+</table>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Expenses</h1>
+
+<table border=3>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Expense Category</th>
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.amount %></td>
+        <td><%= expense.category.try(:name) %></td>
+        <td><%= link_to 'Show', expense %></td>
+        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Back', root_path %> -
+<%= link_to 'New Expense', new_expense_path %> -
+<%= link_to "Download PDF", { :action => "index", :format => :pdf }, target: '_blank'%> -
+<%= link_to "Download CSV", { :action => "index", :format => :csv }, target: '_blank'%> 

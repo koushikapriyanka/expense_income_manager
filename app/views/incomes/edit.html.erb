@@ -1,0 +1,24 @@
+<h1>Editing Income</h1>
+
+<%= form_for(@income) do |f| %>
+ 
+
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.number_field :amount, :required => true %>
+  </div>
+
+  <div id="categories">
+      <%= f.fields_for :category do |fact| %>
+        <%= fact.label :category %>
+        <%= fact.collection_select "name", Category.all, :name, :name  %>
+      <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', @income %> |
+<%= link_to 'Back', incomes_path %>

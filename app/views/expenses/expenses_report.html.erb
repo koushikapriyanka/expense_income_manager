@@ -1,0 +1,14 @@
+<center><h2>Expenses Report</h2></center>
+
+<table style="width: 50%" border=3>
+	<th>Amount</th>
+	<th>Category</th>
+	<th>Date</th>
+	<% expenses_data.each do |expense| %>
+	  <tr>
+	    <td ><%= expense.amount %></td>
+	    <td ><%= expense.category.try(:name)  %></td>
+	    <td ><%= expense.created_at.to_date %></td>
+	  </tr>
+	<% end %>
+</table>
